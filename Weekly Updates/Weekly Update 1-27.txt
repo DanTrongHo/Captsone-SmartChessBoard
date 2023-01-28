@@ -1,0 +1,9 @@
+*Meant to upload this on Friday*
+
+Our main focus for this past week was to finish up the 5V to 12V Boost converter PCB's, pick out a new camera, and get our subsystems back up to where we left off in 403. 
+The PCB's are almost complete, and the plan is to get Dr. Lusher to take one last look at them Monday morning in office hours and then order them.
+We have selected a camera to be ordered with the PCB's on Monday (1/30). 
+In lab, we were able to get everything back to working order (as it was at the end of 403).
+
+Our goals for next week are to select Limit switches for the electromagnet, place the part order on Monday, and add the completed Altium files to Github Monday morning.    
+We also plan to start integration by beginning to write the software for the physical piece movement. 

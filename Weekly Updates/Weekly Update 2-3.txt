@@ -1,0 +1,19 @@
+Howdy, we are Group 50 - Smart Chess Board and this is our weekly update for 2/3/23.
+
+Grayson: After discussing my completed PCB designs for both the Motor Boost Converter and the Electromagnet Boost Converter 
+with Max on Monday, we decided it would be better to design the PCB so that only one Boost Converter is needed. So I spent most of the week
+redesinging my PCB to have only one Boost Converter that has an output branch going stright to the motors and a second output branch that
+feeds into a MOSFET that acts like a switch to turn the Electromagnet on/off. I am still waiting for the Plexiglass and limit switches to
+be delivered.
+
+Dan: I worked on making the UI for the web app run smoother and also was able to add game ID's.
+
+Swade: I placed an order for a new pi camera that advertises 120 degree wide angle lense, so that should work better than the cameras we've
+ordered in the past. Once that comes in, we can begin integrating the piece identification software to the web app.
+
+Mo: Measurements and coding of both the interior and outer array have taken place. A grid/coordinate system for the squares is now in
+development and can be completed once the Plexiglass comes in.
+
+All: As soon as the camera and Plexiglass get delivered, we can start integrating all the subsystems (minus the PCB). Good news is that
+we can run the motors and electromagnet without the PCB by using a 12V power supply, so we don't need to wait on the PCB to come in before 
+starting integration. 

@@ -1,0 +1,18 @@
+Howdy! We are Team 50 - Smart Chess Board and this is our weekly update for 2/10/23.
+
+Grayson: This past week, I finished the PCB design for the Boost Converter and sent it to be ordered on Tuesday, 2/7. I also began writing 
+a pathfinding program to help the motors travel the seams of the squares to deliver the pieces. During lab, we realized that the current
+chess board dimensions were too small to include a graveyard, so after a few discussions we decided it would be best to go ahead and
+correct the error by rebuilding the chess board to have the proper dimensions. Since the physical chess board is my subsystem, I plan to
+fix it during this next weekend (2/18 & 2/19) once the new timing belts arrive from Amazon.
+
+Dan: I am currently working on integrating piece movement with the web app with Mo and Grayson. Once the new camera arrives, integration 
+with piece identification can start. 
+
+Swade: Waiting on new camera to be delivered, it's supposed to come by Monday 2/13. Once delivered I will test it and figure out the height
+needed for the chess board to determine if we need to make in into a table or keep it as is. During the week, I helped think through the
+process of piece promotion and how the camera will be used to help track the physical player's promotions. 
+
+Mo: Over the past week I have been working on writing the python script for the piece movement. The array being used to house the 
+coordniates of each piece is complete, just need to figure out the actual x and y step coordinates for each square once the chess board is 
+fixed. I have also started testing out different methods to stain the plexiglass to incorporate light and dark squares. 

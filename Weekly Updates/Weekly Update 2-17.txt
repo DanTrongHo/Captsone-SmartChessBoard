@@ -1,0 +1,31 @@
+Howdy! We are Team 50 - Smart Chess Board and this is our weekly update for 2/17/23.
+
+
+We have started integration and are working on the physical piece movement. After discussing with Max during Wednesday lab, we have 
+decided to change the dimensions of the chess board to have a 30"x30" playing field. This includes the 64 chess squares as well as 36 
+graveyard squares. 
+
+Grayson - I have begun soldering the PCB and plan to have it done by next lab in order to start testing it. I was able to finish the motor 
+path finding code and am now ready to combine it with Mo's coordinate system code and test our codes together. This weekend, I will be
+rebuilding the chess board to have the bigger dimensions as agreed on. 
+
+Mo - I have finished the coordinate system code, I am now waiting for the new chess board to be built so that we can measure the center 
+coordniates of each square in steps to then fill into the array. Once that is done, I'll be able to combine it with Grayson's code and then
+we can start testing it with the motors/magnet. This weekend, I plan to start testing different methods to color our dark squares on the 
+chess board while maintaining transparency for the camera. 
+
+Swade - I recieved the new cameras and was able to test them during lab. The wide angled camera will need 22" in height, and the fish eyed
+camera needs only 12" in height. The plan for now is to proceed with the fish eyed camera and attach a filter that takes away the
+distortion. I've also started looking into different ways to attach the symbols to the bottom of each piece. 
+
+Dan - This past week I helped Mo and Grayson with the motor movement code and started integrating it with the web app. I also helped Swade
+test the new cameras and used a filter to get rid of the distortion  from the fish eyed lense. 
+
+
+
+
+
+
+
+
+

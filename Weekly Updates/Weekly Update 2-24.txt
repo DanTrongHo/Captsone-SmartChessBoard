@@ -1,0 +1,14 @@
+Howdy we are Team 50: Smart Chess Board and this is our weekly update for 2/24/2023.
+
+All: We are at the point where we are mostly working together to finish integration. We've been focusing on integration of the physical move which includes instructions from the web app to the pi to the motor. We have finished the wrapper functions for the pathfinding and coordinate array codes, and are finsing up getting the coordinates in steps for each square. Once the coordinates are completed, we'll combine all the code onto a gameplay script and start testing different moves sent by the web app. We have also started the integration between the camera and web app, but are still working out the de-fisheye filter. 
+
+
+Individual subsystem work (as still needed):
+
+Grayson: On top of working on the code between the motors and pi, I have been cleaning and testing my PCB. Right now it is only giving an output of 5V instead of 12V, so I will continue to debug it.
+
+Swade: I have been working on getting the new camera to work and need to take a bunch of photos of the board to determine the dimensions of each square in pixels and create a coordinate system from it. 
+
+
+
+

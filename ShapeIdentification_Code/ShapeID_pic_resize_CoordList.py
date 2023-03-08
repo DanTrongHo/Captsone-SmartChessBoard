@@ -4,7 +4,7 @@
 
 #cv2.resize(img, (200,200))
 
-#!!!!The input is a jpg picture and the output is a list varable L
+#!!!!The input for the script is a jpg picture/address and the output for the script is a list varable L
 #in the function called list_of_pieces(str, x_coord, y_coord)
 
 import cv2
@@ -62,7 +62,7 @@ for contour in contours:
         L.append(str)
         L.append(x_coord)
         L.append(y_coord)
-        print(L) #!!!!!This is the output variable and it is a List variable!!!!!!
+        print(L) #!!!!!This is the output variable to got to app/pi and it is a List variable!!!!!!
 
 
 

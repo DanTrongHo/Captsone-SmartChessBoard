@@ -1,11 +1,9 @@
 ### This function takes in center coordinates from the start/end squares and determines the best path for the magnet to move ###
 ### Written with the idea that the x/y origin is in the bottom left corner (magnet home) and input coordinates are center of squares###
 
-### Replace steps with accurate numbers once measured ###
+## Double check motors forward/backwards direction in lab ##
 
-## Double check motors forward/backwards direction when board dimensions are fixed ##
-
-def pathfinding(start_x, start_y, end_x, end_y):
+def pathfinding(start_x, start_y, end_x, end_y, lag): ## DAN: Function takes in int start square x/y coords, int end square x/y coords, and bool lag (true, false)
 	
 	#initializations
 	direction_start_x = "NONE" #Used to help tell the direction to step (FORWARD or BACKWARD)
@@ -29,14 +27,10 @@ def pathfinding(start_x, start_y, end_x, end_y):
 	total_x = abs(end_x - start_x) #total number of x steps that need to be traveled
 	total_y = abs(end_y - start_y) #total number of y steps that need to be traveled
 
-	lag_steps = 50 #number of extra steps needed to account for the lag of the piece when being dragged
-	half_step = 50 #number of steps needed to enter/exit center of square from seam line
+	lag_steps = 70 #number of extra steps needed to account for the lag of the piece when being dragged
+	half_step = 200 #number of steps needed to enter/exit center of square from seam line
 
-	origin_x = 50 #coordinates of origin 
-	origin_y = 50 #coordinates of origin
-	
-
-	#these if-else statements are for piece movement (lag)
+	#these if-else statements are for piece movement
 
 	if start_x == end_x and start_y < end_y: #only y direction travel required, up (scenario 5)
 		motor_start_x = half_step #number of steps to get out of square (LEFT)
@@ -52,7 +46,9 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (UP)
 		direction_main_y = "FORWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square (RIGHT)
+
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square (RIGHT)
 
 	elif start_x == end_x and start_y > end_y: #only y direction travel required, down (scenario 6)
 		motor_start_x = half_step #number of steps to get out of square (RIGHT)
@@ -68,7 +64,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (DOWN)
 		direction_main_y = "BACKWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square (RIGHT)
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square (RIGHT)
 
 	elif start_x > end_x and start_y == end_y: #only x direction travel required, Left (scenario 7)
 		motor_start_x = 0 #no movement (NONE)
@@ -84,7 +81,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_x = total_x - (motor_start_x + motor_end_x) #step count for main path in x direction (LEFT)
 		direction_main_x = "FORWARD"
 
-		motor_end_y += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_y += lag_steps # total number of steps to get into square
 
 	elif start_x > end_x and start_y == end_y: #only x direction travel required, Right (scenario 8)
 		motor_start_x = 0 #no movement (NONE)
@@ -100,7 +98,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_x = total_x - (motor_start_x + motor_end_x) #step count for main path in x direction (RIGHT)
 		direction_main_x = "BACKWARD"
 
-		motor_end_y += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_y += lag_steps # total number of steps to get into square
 
 	elif start_x > end_x and start_y < end_y: #move piece left and up (scenario 1)
 		motor_start_x = 0 #no movement (NONE)
@@ -118,7 +117,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (UP)
 		direction_main_y = "FORWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square
 
 	elif start_x < end_x and start_y > end_y: #move piece right and down (scenario 2)
 		motor_start_x = 0 #no movement (NONE)
@@ -136,7 +136,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (DOWN)
 		direction_main_y = "BACKWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square
 
 	elif start_x > end_x and start_y > end_y: #move piece left and down (scenario 3)
 		motor_start_x = 0 #no movement (NONE)
@@ -154,7 +155,8 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (DOWN)
 		direction_main_y = "BACKWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square
 
 	elif start_x < end_x and start_y < end_y: #move piece right and up (scenario 4)
 		motor_start_x = 0 #no movement (NONE)
@@ -172,22 +174,13 @@ def pathfinding(start_x, start_y, end_x, end_y):
 		motor_main_y = total_y - (motor_start_y + motor_end_y) #step count for main path in y direction (UP)
 		direction_main_y = "FORWARD"
 
-		motor_end_x += lag_steps # total number of steps to get into square
+		if lag == "true"
+			motor_end_x += lag_steps # total number of steps to get into square
 
+	return motor_start_x, motor_start_y, direction_start_x, direction_start_y, motor_main_x, motor_main_y, direction_main_x, direction_main_y, motor_end_x, motor_end_y, direction_end_x, direction_end_y
 
-	#these if-else statements are for moving the magnet back to the origin (no lag)
+	## DAN: motor_start_x and motor_start_y (both ints) are the step counts needed for the motors to exit the starting square, followed by their respective stepper motor command directions (both string) (FORWARD/BACKWARD)
+	## motor_main_x and motor_main_y (both ints) are the step counts needed for the long distance seam traveling, followed by their respective stepper motor command directions (both string) (FORWARD/BACKWARD)
+	## motor_end_x and motor_end_y (both ints) are the step counts needed to get from the seam into the end square (with lag adjustment), followed by their respective stepper motor command directions (both string) (FORWARD/BACKWARD)
 
-	## need to figure out how to put magnet back on line after it goes far enough for lag
-
-	## see what happens when magnet moves past center (connected) to adjust for lag and then comes back to center (while still connected)
-
-	## seperate loop for no magnet no lag? where you add another input Y or N to include lag?
-
-	## or just have origin x and y be == start/end x y and do it that way?
-
-
-
-	return motor_main_x, motor_main_y, direction_main_x, direction_main_y, motor_start_x, motor_start_y, direction_start_x, direction_start_y, motor_end_x, motor_end_y, direction_end_x, direction_end_y
-
-	### returns step counts and motor directions for each path ###
-
+	## Need to somehow have motor go back 70 steps after magent turns off and piece is released when lag is adjusted for so that the magnet is back to the center of thr square if that makes sense ##

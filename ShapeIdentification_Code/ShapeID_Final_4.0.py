@@ -13,20 +13,20 @@ L2 = []
 mainArray = []
 RowList = []
 ColumnList = []
-#def deFishey_fxn():
-    #dtype = "orthographic"
-    #format = "fullframe"
-    #fov = 132 #May need to change these to fit camera
-    #pfov = 100
+def deFishey_fxn():
+    dtype = "orthographic"
+    format = "fullframe"
+    fov = 132 #May need to change these to fit camera
+    pfov = 100
 
-    #image = "final_CameraTest15_Fixed_shape3.jpg"
-    #imageOut = f"defisheyed.jpg"
+    image = "final_CameraTest15_Fixed_shape3.jpg"
+    imageOut = f"defisheyed.jpg"
 
-    #obj = Defisheye(image, dtype=dtype, format = format, fov = fov, pfov = pfov)
-    #obj.convert(imageOut)
+    obj = Defisheye(image, dtype=dtype, format = format, fov = fov, pfov = pfov)
+    obj.convert(imageOut)
 
 
-#deFishey_fxn()
+deFishey_fxn()
 
 # For reading/slecting image
 img = cv2.imread('final_CameraTest15_Fixed_shape3.jpg')

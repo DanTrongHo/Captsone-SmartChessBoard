@@ -6,8 +6,99 @@ Created on Wed Mar 29 18:21:31 2023
 """
 import chess
 
-board=chess.Board()
+board = chess.Board()
+oldList = ['a7','b2','c2','d2','e2','f2','g2','a1','b1','c1','d1','e1','f1','g1','h1', 't1']
+newList = ['a8','b2','c2','d2','e2','f2','g2','a1','b1','c1','d1','e1','f1','g1','h1', 's1']
+DestinationList = []
+SourceList = []
 
+'''
+Move: S and D are only size 1, no graveyard coord
+old = [e2] -> Source = [e2]
+new = [e4] -> Destination = [e4]
+
+Capture: S and D are only size 1, no graveyard coord
+old = [e5] -> Source = [e5]
+new = [c5] -> Destination = [c5] *here t1 is just to designate some graveyard spot
+
+Castle: S and D are size 2, no graveyard coords
+old = [e1, h1] -> Source = [e1, h1]
+new = [f1, g1] -> Destination = [f1, g1]
+
+Promotion: S and D are size 2, S contains one piece graveyard spot and D contains one pawn graveyard spot
+old = [c7, t1] -> Source = [c7, t1] *t1 is a special piece graveyard spot
+new = [c8, s1] -> Destination = [c8, s1] *s1 is the pawn dead spot
+
+En Passant: S and D are size 1
+old = [a5] -> Source = [a5] 
+new = [b6] -> Destination = [b6] *s1 is the pawn dead spot
+
+Kill Promotion: S and D are size 2, S contains one piece spot, D contains only graveyard, one piece and one pawn
+old = [a7, t1] -> Source = [a7, t1] *t1 is the promoted special piece graveyard spot
+new = [b8, s1] -> Destination = [b8, s1] *s1 is the pawn dead spot, t2 is the killed special piece graveyard
+
+'''
+
+def graveyardCheck(inputList):
+    returnList = [0, 0] #[numPieceGY, numPawnGY]
+    for i in range(len(inputList)):
+        if inputList[i][0] == 't' or inputList[i][0] == 's': # Contains something from the piece GY
+            returnList[0] += 1
+        elif inputList[i][1:] == '10' or inputList[i][1:] == '0': # contains something from the pawn GY
+            returnList[1] += 1
+    return returnList
+
+def castleCheck(inputList): # Return Castle String
+    for i in range(len(inputList)):
+        if inputList[i][0] == "g": # King side Castle
+            if inputList[i][1] == "1": # White Castle
+                return "e1-g1"
+            elif inputList[i][1] == "8": # Black Castle
+                return "e8-g8"
+        elif inputList[i][0] == "c": # QueenSide Castle
+            if inputList[i][1] == "1": # White Castle
+                return "e1-c1"
+            elif inputList[i][1] == "8": # Black Castle
+                return "e8-c8"
+
+def promotionCheck(inputList1, inputList2): # Return promotion string
+    returnString1 = ''
+    returnString2 = ''
+    for i in range(len(inputList1)): # List
+        if inputList1[i][0] != 't' and inputList1[i][0] != 's':
+            returnString1 = inputList1[i]
+        if inputList2[i][0] != 't' and inputList2[i][0] != 's':
+            returnString2 = inputList2[i]
+    return returnString1 + '-' + returnString2
+
+def determineString(SourceList, DestinationList):
+    SourceCheck = graveyardCheck(SourceList)
+    DestinationCheck = graveyardCheck(DestinationList)
+    returnString = ""
+
+    if len(SourceList) == 1 and len(DestinationList) == 1: # Piece movement, Capture, En Passant
+        returnString = SourceList[0] + "-" + DestinationList[0]
+    else: # May need to check for size 2, but shouldnt have to
+        if (SourceCheck[0] == 0 and SourceCheck[1] == 0) and (DestinationCheck[0] == 0 and DestinationCheck[1] == 0): # Castle
+            returnString = castleCheck(DestinationList)
+        else: # Promotion
+            returnString = promotionCheck(SourceList, DestinationList)
+    return returnString
+
+def diffList(OldList, NewList):
+    for i in range(len(newList)):
+        if newList[i] not in oldList:
+            DestinationList.append(newList[i])
+    for i in range(len(oldList)):
+        if oldList[i] not in newList:
+            SourceList.append(oldList[i])
+
+diffList(oldList,newList)
+print(determineString(SourceList, DestinationList)) # This is the Sheisty String
+
+
+
+'''
 #light=LED(22)
 
 def graveyardchecker(listelement):
@@ -83,8 +174,6 @@ newlist = [['Pawn','a4'],
 ['Knight','g1'],
 ['Rook','h1']
 ]
-
-
 
 
 
@@ -195,7 +284,7 @@ BigDict = {     #Dictionary to convert Bluetooth Data into piece movement steps 
         }
 
    """     
-        
+
         
 #To update oldlist, check which piece is in first part of DanString, move it to second
 #If something is in the second part of the DanString, kill it
@@ -292,3 +381,4 @@ board.push(move)
 #Length list 1 EZ
 #Length List 2 not the graveyard
 #Length list 3 not the graveyard not the pawn
+'''
